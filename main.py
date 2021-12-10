@@ -9,15 +9,13 @@ except:
     print('Connection error')
     exit()
 
-mp4files = yt.filer('mp4')
+dVideo = yt.streams.filter(progressive = True, file_extension = 'mp4').first()
 
-yt.set_filename(yt.title)
-
-dVideo = yt.get(mp4files[-1].extension, mp4files[-1].resolution)
-
-try:
-    dVideo.download(filePath)
-except:
-    print('Error')
+# try:
+dVideo.download(output_path = filePath, filename = yt.title)
+# except:
+#     print('Download error')
 
 print('Done')
+
+#https://www.youtube.com/watch?v=hsOaJ5gHhu8
